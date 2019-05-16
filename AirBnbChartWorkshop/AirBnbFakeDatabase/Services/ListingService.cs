@@ -8,29 +8,18 @@ namespace AirBnbFakeDatabase.Services
     {
         public IEnumerable<AmountPerNeighbourhood> GetBarChartData(IEnumerable<Listing> listings)
         {
-            var output = new List<AmountPerNeighbourhood>();
             var neighbourhoods = new Dictionary<string, int>();
 
-            foreach (var listing in listings)
-            {
-                if (!neighbourhoods.Keys.Contains(listing.Neighbourhood))
+            var output = listings
+                .GroupBy(l => l.Neighbourhood)
+                .Select(l =>
                 {
-                    neighbourhoods.Add(listing.Neighbourhood, 1);
-                }
-                else
-                {
-                    neighbourhoods[listing.Neighbourhood]++;
-                }
-            }
-
-            foreach (var kvp in neighbourhoods)
-            {
-                output.Add(new AmountPerNeighbourhood
-                {
-                    NeighbourhoodName = kvp.Key,
-                    AmountOfListings = kvp.Value
+                    return new AmountPerNeighbourhood
+                    {
+                        NeighbourhoodName = l.Key,
+                        AmountOfListings = l.Sum(item => 1)
+                    };
                 });
-            }
 
             return output;
         }
