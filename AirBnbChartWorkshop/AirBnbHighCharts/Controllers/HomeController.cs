@@ -66,5 +66,18 @@ namespace AirBnbHighCharts.Controllers
 
             return View(HighChartsViewModel);
         }
+
+        public IActionResult LineChart()
+        {
+            var listings = _fakeDatabase.Listings;
+            var amountOfListingsPerNeighbourhood = _listingService.GetBarChartData(listings);
+
+            var HighChartsViewModel = new HighChartViewModel
+            {
+                AmountOfListingsPerNeighbourhood = amountOfListingsPerNeighbourhood
+            };
+
+            return View(HighChartsViewModel);
+        }
     }
 }

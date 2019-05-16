@@ -1,4 +1,5 @@
-﻿using AirBnbHighCharts.Models;
+﻿using AirBnbFakeDatabase.Models;
+using AirBnbHighCharts.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace AirBnbHighCharts.ViewModels
     public class HighChartViewModel
     {
         public IEnumerable<AirBnbFakeDatabase.Models.AmountOfListingsPerNeighbourhood> AmountOfListingsPerNeighbourhood { get; set; }
+        public IEnumerable<AmountOfBedsPerPriceRange> AverageOfBedsPerPriceRange { get; set; }
 
         public IEnumerable<int> GetAmountOfListings()
         {
@@ -25,7 +27,7 @@ namespace AirBnbHighCharts.ViewModels
             return AmountOfListingsPerNeighbourhood.Select(listing => new PieChartSlice
             {
                 Name = listing.NeighbourhoodName,
-                y = listing.AmountOfListings
+                Y = listing.AmountOfListings
             });
         }
     }

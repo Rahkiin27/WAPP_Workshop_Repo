@@ -9,6 +9,6 @@ namespace AirBnbHighCharts.Models
     {
         public string Name { get; set; }
 
-        public int y { get; set; }
+        public int Y { get; set; }
     }
 }
