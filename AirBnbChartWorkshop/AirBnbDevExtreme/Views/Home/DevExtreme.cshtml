@@ -15,11 +15,11 @@
     .Loop(true)
     .AnimationEnabled(true)
     .Items(tabs => {
-        tabs.Add().Title("Line").Template(@<text>@await Html.PartialAsync("DevExtremeLine", Model)</text>);
+        tabs.Add().Title("Line").Template(@<text>@await Html.PartialAsync("DevExtremeLine", Model.LineChartData)</text>);
 
-        tabs.Add().Title("Bar").Template(@<text>@await Html.PartialAsync("DevExtremeBar", Model.BarChartData_AmountPerNeighbourhood)</text>);
+        tabs.Add().Title("Bar").Template(@<text>@await Html.PartialAsync("DevExtremeBar", Model.BarChartData)</text>);
 
-        tabs.Add().Title("Pie").Template(@<text>@await Html.PartialAsync("DevExtremePie", Model)</text>);
+        tabs.Add().Title("Pie").Template(@<text>@await Html.PartialAsync("DevExtremePie", Model.PieChartData)</text>);
         })
     .OnSelectionChanged("tabPanelSelection_changed")
 )

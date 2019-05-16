@@ -20,23 +20,5 @@ namespace AirBnbFakeDatabase.Services
                     };
                 });
         }
-
-        public IEnumerable<AmountOfBedsPerPriceRange> GetLineChartData(IEnumerable<Listing> listings, int priceRangeSize)
-        {
-            return listings
-                .GroupBy(l => GetPriceRange(l.Price))
-                .Select(l =>
-                {
-                    int priceRange = GetPriceRange(l.Max(item => item.Price)) * priceRangeSize;
-                    string priceRangeString = $"${priceRange - priceRangeSize} - ${priceRange}";
-                    return new AmountOfBedsPerPriceRange
-                    {
-                        PriceRange = priceRangeString,
-                        AmountOfBeds = l.Average(item => item.Beds)
-                    };
-                });
-
-            int GetPriceRange(double price) => (int)Math.Ceiling(price / priceRangeSize);
-        }
     }
 }

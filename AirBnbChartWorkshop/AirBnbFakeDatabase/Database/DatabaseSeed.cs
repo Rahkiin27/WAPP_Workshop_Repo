@@ -41,8 +41,8 @@ namespace AirBnbFakeDatabase.Database
                     Price = price,
                     PricePerWeek = RandomNumber(600, 3500),
                     Bathrooms = RandomNumberAccordingToPrice(1, 5, price),
-                    Bedrooms = RandomNumberAccordingToPrice(1, 5, price),
-                    Beds = RandomNumberAccordingToPrice(1, 5, price),
+                    Bedrooms = RandomNumberAccordingToPrice(1, 7, price),
+                    Beds = RandomNumberAccordingToPrice(1, 20, price),
                     NumberOfReviews = RandomNumber(0, 200),
                     SquareFeet = RandomNumberAccordingToPrice(5, 100, price),
                     Neighbourhood = RandomNeighbourhood()
@@ -54,7 +54,7 @@ namespace AirBnbFakeDatabase.Database
 
         private int RandomNumberAccordingToPrice(int min, int max, double price)
         {
-            return RandomNumber(min, (int)Math.Ceiling(max / (price / 100)));
+            return RandomNumber(min, max - (int)Math.Floor((max - min) / (price / 100)));
         }
 
         private bool RandomBool()
