@@ -16,11 +16,11 @@ namespace AirBnbChartWorkshop.Services
 
         public DevExtremeViewModel GetDevExtremeViewModel(IEnumerable<Listing> listings) 
         {
-            var lineChartData = _listingService.GetLineChartData(listings, 100);
-
             return new DevExtremeViewModel
             {
-                BarChartData_AmountPerNeighbourhood = _listingService.GetBarChartData(listings)
+                BarChartData = _listingService.GetBarChartData(listings),
+                LineChartData = _listingService.GetLineChartData(listings, 50),
+                PieChartData = _listingService.GetBarChartData(listings)
             };
         }
     }
