@@ -7,3 +7,19 @@
     <h1 class="display-4">Pie Chart</h1>
 </div>
 
+@(Html.DevExtreme().PieChart()
+    .ID("pie")
+    .Series(s => {
+            s.Add()
+            .ArgumentField("NeighbourhoodName")
+            .ValueField("AmountOfListings")
+            .Label(l => l
+                .Visible(true)
+                .Connector(c => c
+                    .Visible(true)
+                    .Width(1)));
+        })
+    .Title("Amount of listings per neighbourhood")
+    .Export(e => e.Enabled(true))
+    .DataSource(Model)
+)

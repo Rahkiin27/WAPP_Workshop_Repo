@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AirBnbFakeDatabase.Models.AverageAmountOfBedsPerPriceRange>
+﻿@model IEnumerable<AirBnbFakeDatabase.Models.AmountOfListingsPerNeighbourhood>
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -10,32 +10,21 @@
 <div id="chart-demo">
     @(Html.DevExtreme().Chart()
         .ID("line-chart")
-        .Palette(VizPalette.Violet)
         .CommonSeriesSettings(s => s
-            .ArgumentField("PriceRange")
+            .ArgumentField("NeighbourhoodName")
             .Type(SeriesType.Line)
         )
-        .Margin(m => m.Bottom(20))
-        .ArgumentAxis(a => a
-            .ValueMarginsEnabled(false)
-            .DiscreteAxisDivisionMode(DiscreteAxisDivisionMode.CrossLabels)
-            .Grid(g => g.Visible(true))
-        )
-        .Series(s => {
-            s.Add().ValueField("AverageAmountOfBeds").Name("Average Amount Of Beds");
+        .Series(s =>
+                {
+            s.Add()
+                .ValueField("AmountOfListings")
+                .Name("Amount of listings");
         })
-        .Legend(l => l
-            .VerticalAlignment(VerticalEdge.Bottom)
-            .HorizontalAlignment(HorizontalAlignment.Center)
-            .ItemTextPosition(Position.Bottom)
-        )
         .Title(t => t
-            .Text("Beds per Price Range")
-            .Subtitle(s => s.Text("(On Average)"))
+            .Text("Total Amount of Listings")
+            .Subtitle(s => s.Text("(Per Neighbourhood)"))
         )
         .Export(e => e.Enabled(true))
          .DataSource(Model)
     )
-
-   
 </div>   

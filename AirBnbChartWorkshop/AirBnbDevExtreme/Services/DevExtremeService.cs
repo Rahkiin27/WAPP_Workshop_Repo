@@ -19,7 +19,7 @@ namespace AirBnbChartWorkshop.Services
             return new DevExtremeViewModel
             {
                 BarChartData = _listingService.GetBarChartData(listings),
-                LineChartData = _listingService.GetLineChartData(listings, 50),
+                LineChartData = _listingService.GetBarChartData(listings),
                 PieChartData = _listingService.GetBarChartData(listings)
             };
         }
