@@ -15,7 +15,7 @@ namespace AirBnbCanvasJS.Services
 
         public ChartsService()
         {
-            _fakeDatabase = new FakeDatabase();
+            _fakeDatabase = FakeDatabase.Instance;
             _listingService = new ListingService();
         }
 
