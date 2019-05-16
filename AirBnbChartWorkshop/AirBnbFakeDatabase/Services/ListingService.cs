@@ -1,4 +1,5 @@
 ﻿using AirBnbFakeDatabase.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,22 +7,36 @@ namespace AirBnbFakeDatabase.Services
 {
     public class ListingService
     {
-        public IEnumerable<AmountPerNeighbourhood> GetBarChartData(IEnumerable<Listing> listings)
+        public IEnumerable<AmountOfListingsPerNeighbourhood> GetBarChartData(IEnumerable<Listing> listings)
         {
-            var neighbourhoods = new Dictionary<string, int>();
-
-            var output = listings
+            return listings
                 .GroupBy(l => l.Neighbourhood)
                 .Select(l =>
                 {
-                    return new AmountPerNeighbourhood
+                    return new AmountOfListingsPerNeighbourhood
                     {
                         NeighbourhoodName = l.Key,
                         AmountOfListings = l.Sum(item => 1)
                     };
                 });
+        }
 
-            return output;
+        public IEnumerable<AmountOfBedsPerPriceRange> GetLineChartData(IEnumerable<Listing> listings, int priceRangeSize)
+        {
+            return listings
+                .GroupBy(l => GetPriceRange(l.Price))
+                .Select(l =>
+                {
+                    int priceRange = GetPriceRange(l.Max(item => item.Price)) * priceRangeSize;
+                    string priceRangeString = $"${priceRange - priceRangeSize} - ${priceRange}";
+                    return new AmountOfBedsPerPriceRange
+                    {
+                        PriceRange = priceRangeString,
+                        AmountOfBeds = l.Average(item => item.Beds)
+                    };
+                }).ToList();
+
+            int GetPriceRange(double price) => (int)Math.Ceiling(price / priceRangeSize);
         }
     }
 }

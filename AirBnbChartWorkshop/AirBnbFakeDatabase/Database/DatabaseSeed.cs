@@ -27,12 +27,10 @@ namespace AirBnbFakeDatabase.Database
 
             for (int i = 0; i < amount; i++)
             {
+                double price = RandomNumber(100, 400);
                 listings.Add(new Listing
                 {
                     ListingId = i,
-                    Bathrooms = RandomNumber(1, 5),
-                    Bedrooms = RandomNumber(1, 7),
-                    Beds = RandomNumber(1, 20),
                     BedType = RandomBedType(),
                     GuestsIncluded = RandomNumber(1, 3),
                     HostResponseRate = RandomNumber(1, 100),
@@ -40,15 +38,23 @@ namespace AirBnbFakeDatabase.Database
                     MaximumNights = RandomNumber(1, 31),
                     MinimumNights = RandomNumber(1, 5),
                     Name = GenerateName(RandomBool()),
-                    Price = RandomNumber(1, 420),
+                    Price = price,
                     PricePerWeek = RandomNumber(600, 3500),
+                    Bathrooms = RandomNumberAccordingToPrice(1, 5, price),
+                    Bedrooms = RandomNumberAccordingToPrice(1, 5, price),
+                    Beds = RandomNumberAccordingToPrice(1, 5, price),
                     NumberOfReviews = RandomNumber(0, 200),
-                    SquareFeet = RandomNumber(5, 100),
+                    SquareFeet = RandomNumberAccordingToPrice(5, 100, price),
                     Neighbourhood = RandomNeighbourhood()
                 });
             }
 
             return listings;
+        }
+
+        private int RandomNumberAccordingToPrice(int min, int max, double price)
+        {
+            return RandomNumber(min, (int)Math.Ceiling(max / (price / 100)));
         }
 
         private bool RandomBool()
@@ -82,10 +88,9 @@ namespace AirBnbFakeDatabase.Database
         private string GenerateName(bool isMale)
         {
             var gender = isMale ? Gender.Male : Gender.Female;
-            string name = string.Empty;
 
-            name = NameGenerator.GenerateFirstName(gender);
-
+            string name = NameGenerator.GenerateFirstName(gender);
+            
             name = name.ToLower();
             return name.First().ToString().ToUpper() + name.Substring(1);
         }

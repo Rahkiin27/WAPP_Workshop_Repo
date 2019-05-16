@@ -12,10 +12,12 @@ namespace AirBnbChartWorkshop.Controllers
     public class HomeController : Controller
     {
         private readonly FakeDatabase _fakeDatabase;
+        private readonly DevExtremeService _devExtremeService;
 
         public HomeController()
         {
             _fakeDatabase = new FakeDatabase();
+            _devExtremeService = new DevExtremeService();
         }
 
         public IActionResult Index()
@@ -30,10 +32,9 @@ namespace AirBnbChartWorkshop.Controllers
 
         public IActionResult DevExtreme()
         {
-            var service = new DevExtremeService();
             var listings = _fakeDatabase.Listings;
 
-            return View(service.GetDevExtremeViewModel(listings));
+            return View(_devExtremeService.GetDevExtremeViewModel(listings));
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

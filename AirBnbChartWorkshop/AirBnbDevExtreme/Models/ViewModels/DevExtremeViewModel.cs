@@ -5,6 +5,6 @@ namespace AirBnbChartWorkshop.Models.ViewModels
 {
     public class DevExtremeViewModel
     {
-        public IEnumerable<AmountPerNeighbourhood> BarChartData_AmountPerNeighbourhood { get; set; }
+        public IEnumerable<AmountOfListingsPerNeighbourhood> BarChartData_AmountPerNeighbourhood { get; set; }
     }
 }

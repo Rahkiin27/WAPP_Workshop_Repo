@@ -1,9 +1,7 @@
 ﻿using AirBnbChartWorkshop.Models.ViewModels;
 using AirBnbFakeDatabase.Models;
 using AirBnbFakeDatabase.Services;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace AirBnbChartWorkshop.Services
 {
@@ -18,6 +16,8 @@ namespace AirBnbChartWorkshop.Services
 
         public DevExtremeViewModel GetDevExtremeViewModel(IEnumerable<Listing> listings) 
         {
+            var lineChartData = _listingService.GetLineChartData(listings, 100);
+
             return new DevExtremeViewModel
             {
                 BarChartData_AmountPerNeighbourhood = _listingService.GetBarChartData(listings)

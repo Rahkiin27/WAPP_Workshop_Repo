@@ -1,6 +1,6 @@
 ﻿namespace AirBnbFakeDatabase.Models
 {
-    public class AmountPerNeighbourhood
+    public class AmountOfListingsPerNeighbourhood
     {
         public string NeighbourhoodName { get; set; }
         public int AmountOfListings { get; set; }
