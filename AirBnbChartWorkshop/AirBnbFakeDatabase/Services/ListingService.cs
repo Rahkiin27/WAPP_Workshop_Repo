@@ -34,7 +34,7 @@ namespace AirBnbFakeDatabase.Services
                         PriceRange = priceRangeString,
                         AmountOfBeds = l.Average(item => item.Beds)
                     };
-                }).ToList();
+                });
 
             int GetPriceRange(double price) => (int)Math.Ceiling(price / priceRangeSize);
         }
