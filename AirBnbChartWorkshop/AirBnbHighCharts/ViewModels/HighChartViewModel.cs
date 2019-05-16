@@ -10,7 +10,6 @@ namespace AirBnbHighCharts.ViewModels
     public class HighChartViewModel
     {
         public IEnumerable<AirBnbFakeDatabase.Models.AmountOfListingsPerNeighbourhood> AmountOfListingsPerNeighbourhood { get; set; }
-        public IEnumerable<AmountOfBedsPerPriceRange> AverageOfBedsPerPriceRange { get; set; }
 
         public IEnumerable<int> GetAmountOfListings()
         {
