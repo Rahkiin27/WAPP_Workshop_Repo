@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using AirBnbHighCharts.Models;
 using AirBnbFakeDatabase.Database;
 using AirBnbFakeDatabase.Services;
+using AirBnbHighCharts.ViewModels;
 
 namespace AirBnbHighCharts.Controllers
 {
@@ -38,6 +39,32 @@ namespace AirBnbHighCharts.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult BarChart()
+        {
+            var listings = _fakeDatabase.Listings;
+            var amountOfListingsPerNeighbourhood = _listingService.GetBarChartData(listings);
+
+            var HighChartsViewModel = new HighChartViewModel
+            {
+                AmountOfListingsPerNeighbourhood = amountOfListingsPerNeighbourhood
+            };
+
+            return View(HighChartsViewModel);
+        }
+
+        public IActionResult PieChart()
+        {
+            var listings = _fakeDatabase.Listings;
+            var amountOfListingsPerNeighbourhood = _listingService.GetBarChartData(listings);
+
+            var HighChartsViewModel = new HighChartViewModel
+            {
+                AmountOfListingsPerNeighbourhood = amountOfListingsPerNeighbourhood
+            };
+
+            return View(HighChartsViewModel);
         }
     }
 }
