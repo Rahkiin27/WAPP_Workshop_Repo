@@ -5,7 +5,8 @@ In deze workshop gaan we een barchart, piechart en linechart toevoegen d.m.v. ca
 
 1. Clone de workshop repo: [https://github.com/TheLegend27NL/WAPP_Workshop_Repo](https://github.com/TheLegend27NL/WAPP_Workshop_Repo)
 2. Maak een nieuw .NET CORE 3.0 MVC project in dezelfde solution aan.
-3. Open in project "AirBnbCanvasJs" het bestand `"Views/Shared/_Layout.cshtml"` en plaats de volgende regel tussen de <head></head> tags:
+3. Voeg een referentie toe naar de AirBnBFakeDatabase class library. Dit doe je door op jouw eigen project rechter muis te doen op dependencies -> Add reference en vervolgens AirBnbFakeDatabse aanvinken
+4. Open in project "AirBnbCanvasJs" het bestand `"Views/Shared/_Layout.cshtml"` en plaats de volgende regel tussen de <head></head> tags:
 ```c#
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 ```
@@ -21,7 +22,7 @@ en voeg de volgende nav-items toe:
 	<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="LineChart">LineChart</a>
 </li>
 ```
-4. Maak in de map `"Models"` een nieuw bestand met de naam `"DataPoint.cs"` en plak de volgende code:
+5. Maak in de map `"Models"` een nieuw bestand met de naam `"DataPoint.cs"` en plak de volgende code:
 ```c#
 public class DataPoint
     {
@@ -35,7 +36,7 @@ public class DataPoint
         public double y { get; set; }
     }
 ```
-5. Maak een nieuwe map genaamd `"Services"` en voeg hier een nieuwe class toe met de naam `"ChartsService.cs"`. Plak hier vervolgens de volgende code:
+6. Maak een nieuwe map genaamd `"Services"` en voeg hier een nieuwe class toe met de naam `"ChartsService.cs"`. Plak hier vervolgens de volgende code:
 ```c#
 public class ChartsService
 {
@@ -66,7 +67,7 @@ public class ChartsService
 ```
 
 ## Barchart toevoegen
-6. Open de Homecontroller en voeg de volgende code toe:
+7. Open de Homecontroller en voeg de volgende code toe:
 ```c#
 private readonly ChartsService _chartsService;
 
@@ -85,7 +86,7 @@ public IActionResult Barchart()
     return View();
 }
 ```
-7. Maak in de map `"Views/Home"` een nieuw bestand met de naam `Barchart.cshtml` en plak de volgende code:
+8. Maak in de map `"Views/Home"` een nieuw bestand met de naam `Barchart.cshtml` en plak de volgende code:
 ```c#
 @{
     ViewData["Title"] = "Barchart";
@@ -112,10 +113,10 @@ public IActionResult Barchart()
     };
 </script>
 ```
-7.  Run het project en ga via het menu naar de barchart
+9.  Run het project en ga via het menu naar de barchart
 
 ## Piechart toevoegen
-8. Open de Homecontroller en voeg de volgende code toe:
+10. Open de Homecontroller en voeg de volgende code toe:
 ```c#
 public IActionResult Piechart()
 {
@@ -125,7 +126,7 @@ public IActionResult Piechart()
 	return View();
 }
 ```
-9. Maak in de map `"Views/Home"` een nieuw bestand met de naam `Piechart.cshtml` en plak de volgende code:
+11. Maak in de map `"Views/Home"` een nieuw bestand met de naam `Piechart.cshtml` en plak de volgende code:
 ```c#
 @{
     ViewData["Title"] = "Piechart";
@@ -152,10 +153,10 @@ public IActionResult Piechart()
     };
 </script>
 ```
-10.  Run het project en ga via het menu naar de piechart
+12.  Run het project en ga via het menu naar de piechart
 
 ## Linechart toevoegen
-11. Open de Homecontroller en voeg de volgende code toe:
+13. Open de Homecontroller en voeg de volgende code toe:
 ```c#
 public IActionResult Linechart()
 {
@@ -165,7 +166,7 @@ public IActionResult Linechart()
 	return View();
 }
 ```
-12. Maak in de map `"Views/Home"` een nieuw bestand met de naam `Linechart.cshtml` en plak de volgende code:
+14. Maak in de map `"Views/Home"` een nieuw bestand met de naam `Linechart.cshtml` en plak de volgende code:
 ```c#
 @{
     ViewData["Title"] = "Linechart";
@@ -192,4 +193,4 @@ public IActionResult Linechart()
     };
 </script>
 ```
-13.  Run het project en ga via het menu naar de linechart
+15.  Run het project en ga via het menu naar de linechart
