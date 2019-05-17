@@ -6,15 +6,15 @@ In deze workshop gaan we een barchart, piechart en linechart toevoegen d.m.v. Hi
 3. Maak een nieuw .NET CORE 3.0 MVC project in dezelfde solution aan genaamd: `"HighCharts"`
 4. Installeer de Newtonsoft.Json NuGet package. (Staat als tweede wanneer de "Manage NuGet Packages" pagina op het "Browse" tabblad wordt geopend)
 
-5. Open _Layout.cshtml en plak het volgende boven "</head>":
+5. Open _Layout.cshtml en plak het volgende boven ```</head>```:
 ```html
   <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/series-label.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+  <script src="https://code.highcharts.com/modules/series-label.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
 ```
 
-6. Maak in de map `"Models"` een nieuw bestand met de naam `"HighChartViewMOdel.cs"` en plak de volgende code in dit bestand:
+6. Maak een map `"ViewModels"` aan en creeër het bestand `"HighChartViewModel.cs"` en plak de volgende code:
 ```c#
 using AirBnbFakeDatabase.Models;
 using AirBnbHighCharts.Models;
@@ -49,17 +49,13 @@ namespace AirBnbHighCharts.ViewModels
         }
     }
 }
+```
 
 Het idee van deze viewmodel is dat er straks in de views deze data kan worden opgevraagd.
 
-7. Maak een nieuwe Model in de **Models** folder genaamd **PieChartSlice.cs** en plak de volgende code:
+7. Maak een nieuwe `"Model"` in de `"Models"` folder genaamd `"PieChartSlice.cs"` en plak de volgende code:
 
 ```c#
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace AirBnbHighCharts.Models
 {
     public class PieChartSlice
@@ -70,10 +66,10 @@ namespace AirBnbHighCharts.Models
     }
 }
 ```
-De reden dat specifiek voor een PieChart een model moet worden aangemaakt, is omdat deze de data in een iets ander format verwacht.
+De reden dat specifiek voor een `"PieChart"` een model moet worden aangemaakt, is omdat een PieChart de data in een iets ander format verwacht.
 
 
-8. Open de HomeController en voeg de volgende code toe. Druk daarna eventueel op ALT+ENTER om de usings goed te zetten:
+8. Open de `"HomeController"` en voeg de volgende code toe. Druk daarna eventueel op `"ALT+ENTER"` om de usings goed te zetten:
 ```c#
 using System;
 using System.Collections.Generic;
@@ -160,7 +156,7 @@ namespace AirBnbHighCharts.Controllers
 }
 ```
 
-9. Open de _Layout.csthml in de View-> shared folder en voeg de volgende nav-items toe:
+9. Open de `"_Layout.cshtml"` in de `"View -> shared"` folder en voeg de volgende nav-items toe:
 ```html
 <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="BarChart">BarChart</a>
@@ -174,8 +170,72 @@ namespace AirBnbHighCharts.Controllers
 ```
 
 10. 
+## PieChart
+Maak een nieuwe `"Razor View"` aan in de `"Home"` map genaamd `"PieChart.cshtml"` en plak daar de volgende code in:
+```c#
+@model AirBnbHighCharts.ViewModels.HighChartViewModel;
+@using Newtonsoft.Json;
+@using Newtonsoft.Json.Serialization;
+
+<div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+
+<script>
+    var data = @Html.Raw(JsonConvert.SerializeObject(@Model.GetPieChartData(),
+         new JsonSerializerSettings
+         {
+             ContractResolver = new CamelCasePropertyNamesContractResolver()
+         }));
+
+    Highcharts.chart('container', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'Listings per neighbourhood'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                style: {
+                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                }
+            }
+        }
+    },
+    series: [{
+        name: 'Neighbourhoods',
+        colorByPoint: true,
+        data: data,
+    }]
+});
+</script>
+```
+Hier zie je dus dat de viewmodel wordt aangeroepen met de methodes:
+
+- `"GetPieChartData()"`
+
+*Tip: De volgende code:*
+```csharp
+@Html.Raw(JsonConvert.SerializeObject(@Model.GetPieChartData(),
+         new JsonSerializerSettings
+         {
+             ContractResolver = new CamelCasePropertyNamesContractResolver()
+         }));
+```
+*Is om een "`C#`" object om te zetten naar een "`Javascript JSON`" object*
+
 ## BarChart
-Maak een nieuwe Razor View aan in de `"Home"` map genaamd `"BarChart.cshtml"` en plak daar de volgende code in:
+Maak een nieuwe `"Razor View"` aan in de `"Home"` map genaamd `"BarChart.cshtml"` en plak daar de volgende code in:
 ```c#
 @model AirBnbHighCharts.ViewModels.HighChartViewModel;
 @using Newtonsoft.Json;
@@ -239,74 +299,10 @@ Maak een nieuwe Razor View aan in de `"Home"` map genaamd `"BarChart.cshtml"` en
 });
 </script>
 ```
-Hier zie je dus dat de viewmodel wordt aangeroepen met de methodes:
+Hier zie je dus dat de `"ViewModel"` wordt aangeroepen met de methodes:
 
-- GetNeighbourhoods()
-- GetAmountOfListings()
-
-*Tip: De volgende code:*
-```csharp
-@Html.Raw(JsonConvert.SerializeObject(@Model.GetPieChartData(),
-         new JsonSerializerSettings
-         {
-             ContractResolver = new CamelCasePropertyNamesContractResolver()
-         }));
-```
-*Is om een "`C#`" object om te zetten naar een "`Javascript JSON`" object*
-
-## PieChart
-Maak een nieuwe Razor View aan in de `"Home"` map genaamd `"PieChart.cshtml"` en plak daar de volgende code in:
-```c#
-@model AirBnbHighCharts.ViewModels.HighChartViewModel;
-@using Newtonsoft.Json;
-@using Newtonsoft.Json.Serialization;
-
-<div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
-
-<script>
-    var data = @Html.Raw(JsonConvert.SerializeObject(@Model.GetPieChartData(),
-         new JsonSerializerSettings
-         {
-             ContractResolver = new CamelCasePropertyNamesContractResolver()
-         }));
-
-    Highcharts.chart('container', {
-    chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
-        plotShadow: false,
-        type: 'pie'
-    },
-    title: {
-        text: 'Listings per neighbourhood'
-    },
-    tooltip: {
-        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-    },
-    plotOptions: {
-        pie: {
-            allowPointSelect: true,
-            cursor: 'pointer',
-            dataLabels: {
-                enabled: true,
-                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                style: {
-                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-                }
-            }
-        }
-    },
-    series: [{
-        name: 'Neighbourhoods',
-        colorByPoint: true,
-        data: data,
-    }]
-});
-</script>
-```
-Hier zie je dus dat de viewmodel wordt aangeroepen met de methodes:
-
-- GetPieChartData()
+- `"GetNeighbourhoods()"`
+- `"GetAmountOfListings()"`
 
 *Tip: De volgende code:*
 ```csharp
@@ -397,8 +393,8 @@ Maak een nieuwe Razor View aan in de `"Home"` map genaamd `"BarChart.cshtml"` en
 ```
 Hier zie je dus dat de viewmodel wordt aangeroepen met de methodes:
 
-- GetNeighbourhoods()
-- GetAmountOfListings()
+- `"GetNeighbourhoods()"`
+- `"GetAmountOfListings()"`
 
 *Tip: De volgende code:*
 ```csharp
