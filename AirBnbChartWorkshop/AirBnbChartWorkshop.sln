@@ -9,9 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AirBnbHighCharts", "AirBnbH
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AirBnbCanvasJS", "AirBnbCanvasJS\AirBnbCanvasJS.csproj", "{6D7E9B28-8E93-4346-92C6-F43AC0EF8534}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirBnbChartJS", "AirBnbChartJS\AirBnbChartJS.csproj", "{E91370F2-9F87-402F-85E1-9486C6817C90}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirBnbChartJSTest", "AirBnbChartJSTest\AirBnbChartJSTest.csproj", "{1E28B391-0FC5-4C2C-B396-9636E7FE5B31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AirBnbChartJS", "AirBnbChartJS\AirBnbChartJS.csproj", "{E91370F2-9F87-402F-85E1-9486C6817C90}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +33,10 @@ Global
 		{E91370F2-9F87-402F-85E1-9486C6817C90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E91370F2-9F87-402F-85E1-9486C6817C90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E91370F2-9F87-402F-85E1-9486C6817C90}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1E28B391-0FC5-4C2C-B396-9636E7FE5B31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1E28B391-0FC5-4C2C-B396-9636E7FE5B31}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1E28B391-0FC5-4C2C-B396-9636E7FE5B31}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1E28B391-0FC5-4C2C-B396-9636E7FE5B31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4F84E05-8DB4-4E16-AC18-008D5779E4B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4F84E05-8DB4-4E16-AC18-008D5779E4B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4F84E05-8DB4-4E16-AC18-008D5779E4B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4F84E05-8DB4-4E16-AC18-008D5779E4B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
