@@ -5,14 +5,15 @@ In deze workshop gaan we een barchart, piechart en linechart toevoegen d.m.v. Ch
 2. Open de solution met VS2019
 3. Maak een nieuw .NET CORE 3.0 MVC project in dezelfde solution aan genaamd: `"AirBnbChartJSTest"`
 4. Installeer de Newtonsoft.Json NuGet package. (Staat als tweede wanneer de "Manage NuGet Packages" pagina op het "Browse" tabblad wordt geopend)
+5. Voeg een referentie toe naar de AirBnBFakeDatabase class library. Dit doe je door op jouw eigen project rechter muis te doen op dependencies -> Add reference en vervolgens AirBnbFakeDatabse aanvinken
 
-5. Open _Layout.cshtml en plak het volgende boven `"</head>"`:
+6. Open _Layout.cshtml en plak het volgende boven `"</head>"`:
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 ```
 
-6. Maak in de map `"Models"` een nieuw bestand met de naam `"ChartViewModel.cs"` en plak de volgende code in dit bestand:
+7. Maak in de map `"Models"` een nieuw bestand met de naam `"ChartViewModel.cs"` en plak de volgende code in dit bestand:
 ```c#
 using System.Collections.Generic;
 using System.Drawing;
@@ -46,7 +47,7 @@ namespace AirBnbChartJSTest.Models
     }
 }
 ```
-7. Maak een nieuwe folder aan genaamd `"Services"` en voeg hier een nieuwe class toe genaamd `"ChartJsService.cs"`. Plak hier vervolgens de volgende code in: (Het "Listing" object wordt rood gemarkeerd. Ga op deze regel staan en druk op ALT+ENTER om een reference naar de "AirBnbFakeDatabase" te maken.)
+8. Maak een nieuwe folder aan genaamd `"Services"` en voeg hier een nieuwe class toe genaamd `"ChartJsService.cs"`. Plak hier vervolgens de volgende code in: (Het "Listing" object wordt rood gemarkeerd. Ga op deze regel staan en druk op ALT+ENTER om een reference naar de "AirBnbFakeDatabase" te maken.)
 ```c#
 using AirBnbChartJSTest.Models;
 using AirBnbFakeDatabase.Models;
@@ -128,7 +129,7 @@ namespace AirBnbChartJSTest.Services
 }
 ```
 
-8. Open de HomeController en voeg de volgende code toe. Druk daarna op ALT+ENTER om de usings goed te zetten:
+9. Open de HomeController en voeg de volgende code toe. Druk daarna op ALT+ENTER om de usings goed te zetten:
 ```c#
 private readonly FakeDatabase _fakeDatabase;
 private readonly ChartJsService _chartJsService;
@@ -147,7 +148,7 @@ public IActionResult Chart(int id)
 }
 ```
 
-9. Open de _Layout pagina en voeg de volgende nav-items toe:
+10. Open de _Layout pagina en voeg de volgende nav-items toe:
 ```html
 <li class="nav-item">
     <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Chart" asp-route-id="0">Bar Chart</a>
@@ -160,7 +161,7 @@ public IActionResult Chart(int id)
 </li>
 ```
 
-10. Maak een nieuwe Razor View aan in de `"Home"` map genaamd `"Chart.cshtml"` en plak daar de volgende code in:
+11. Maak een nieuwe Razor View aan in de `"Home"` map genaamd `"Chart.cshtml"` en plak daar de volgende code in:
 ```c#
 @model AirBnbChartJSTest.Models.ChartViewModel
 @using Newtonsoft.Json
@@ -193,4 +194,4 @@ public IActionResult Chart(int id)
 </script>  
 ```
 
-11. Druk op F5, en je bent klaar!
+12. Druk op F5, en je bent klaar!
