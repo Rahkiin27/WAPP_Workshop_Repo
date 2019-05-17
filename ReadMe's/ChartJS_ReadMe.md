@@ -6,7 +6,7 @@ In deze workshop gaan we een barchart, piechart en linechart toevoegen d.m.v. Ch
 3. Maak een nieuw .NET CORE 3.0 MVC project in dezelfde solution aan genaamd: `"AirBnbChartJSTest"`
 4. Installeer de Newtonsoft.Json NuGet package. (Staat als tweede wanneer de "Manage NuGet Packages" pagina op het "Browse" tabblad wordt geopend)
 
-5. Open _Layout.cshtml en plak het volgende boven "</head>":
+5. Open _Layout.cshtml en plak het volgende boven `"</head>"`:
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
