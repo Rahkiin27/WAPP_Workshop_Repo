@@ -5,9 +5,21 @@ In deze workshop gaan we een barchart, piechart en linechart toevoegen d.m.v. ca
 
 1. Clone de workshop repo: [https://github.com/TheLegend27NL/WAPP_Workshop_Repo](https://github.com/TheLegend27NL/WAPP_Workshop_Repo)
 2. Maak een nieuw .NET CORE 3.0 MVC project in dezelfde solution aan.
-3. Open in project "AirBnbCanvasJs" het bestand `"Views/Shared/_Layout.cshtml"` en plaats de volgende regel op regel 6:
+3. Open in project "AirBnbCanvasJs" het bestand `"Views/Shared/_Layout.cshtml"` en plaats de volgende regel tussen de <head></head> tags:
 ```c#
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+```
+en voeg de volgende nav-items toe:
+```c#
+<li class="nav-item">
+	<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="BarChart">BarChart</a>
+</li>
+<li class="nav-item">
+	<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="PieChart">PieChart</a>
+</li>
+<li class="nav-item">
+	<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="LineChart">LineChart</a>
+</li>
 ```
 4. Maak in de map `"Models"` een nieuw bestand met de naam `"DataPoint.cs"` en plak de volgende code:
 ```c#
@@ -100,7 +112,7 @@ public IActionResult Barchart()
     };
 </script>
 ```
-7.  Run het project en ga naar `localhost:54172/home/barchart`
+7.  Run het project en ga via het menu naar de barchart
 
 ## Piechart toevoegen
 8. Open de Homecontroller en voeg de volgende code toe:
@@ -140,7 +152,7 @@ public IActionResult Piechart()
     };
 </script>
 ```
-10.  Run het project en ga naar `localhost:54172/home/piechart`
+10.  Run het project en ga via het menu naar de piechart
 
 ## Linechart toevoegen
 11. Open de Homecontroller en voeg de volgende code toe:
@@ -180,4 +192,4 @@ public IActionResult Linechart()
     };
 </script>
 ```
-13.  Run het project en ga naar `localhost:54172/home/linechart`
+13.  Run het project en ga via het menu naar de linechart
