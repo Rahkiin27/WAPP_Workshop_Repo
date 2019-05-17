@@ -5,8 +5,9 @@ In deze workshop gaan we een barchart, piechart en linechart toevoegen d.m.v. Hi
 2. Open de solution met VS2019
 3. Maak een nieuw .NET CORE 3.0 MVC project in dezelfde solution aan genaamd: `"HighCharts"`
 4. Installeer de Newtonsoft.Json NuGet package. (Staat als tweede wanneer de "Manage NuGet Packages" pagina op het "Browse" tabblad wordt geopend)
+5. Voeg een referentie toe naar de AirBnBFakeDatabase class library. Dit doe je door op jouw eigen project rechter muis te doen op dependencies -> Add reference en vervolgens AirBnbFakeDatabse aanvinken
 
-5. Open _Layout.cshtml en plak het volgende boven ```</head>```:
+6. Open _Layout.cshtml en plak het volgende boven ```</head>```:
 ```html
   <script src="https://code.highcharts.com/highcharts.js"></script>
   <script src="https://code.highcharts.com/modules/series-label.js"></script>
@@ -14,7 +15,7 @@ In deze workshop gaan we een barchart, piechart en linechart toevoegen d.m.v. Hi
   <script src="https://code.highcharts.com/modules/export-data.js"></script>
 ```
 
-6. Maak een map `"ViewModels"` aan en creeër het bestand `"HighChartViewModel.cs"` en plak de volgende code:
+7. Maak een map `"ViewModels"` aan en creeër het bestand `"HighChartViewModel.cs"` en plak de volgende code:
 ```c#
 using AirBnbFakeDatabase.Models;
 using AirBnbHighCharts.Models;
@@ -53,7 +54,7 @@ namespace AirBnbHighCharts.ViewModels
 
 Het idee van deze viewmodel is dat er straks in de views deze data kan worden opgevraagd.
 
-7. Maak een nieuwe `"Model"` in de `"Models"` folder genaamd `"PieChartSlice.cs"` en plak de volgende code:
+8. Maak een nieuwe `"Model"` in de `"Models"` folder genaamd `"PieChartSlice.cs"` en plak de volgende code:
 
 ```c#
 namespace AirBnbHighCharts.Models
@@ -69,7 +70,7 @@ namespace AirBnbHighCharts.Models
 De reden dat specifiek voor een `"PieChart"` een model moet worden aangemaakt, is omdat een PieChart de data in een iets ander format verwacht.
 
 
-8. Open de `"HomeController"` en voeg de volgende code toe. Druk daarna eventueel op `"ALT+ENTER"` om de usings goed te zetten:
+9. Open de `"HomeController"` en voeg de volgende code toe. Druk daarna eventueel op `"ALT+ENTER"` om de usings goed te zetten:
 ```c#
 using System;
 using System.Collections.Generic;
@@ -156,7 +157,7 @@ namespace AirBnbHighCharts.Controllers
 }
 ```
 
-9. Open de `"_Layout.cshtml"` in de `"View -> shared"` folder en voeg de volgende nav-items toe:
+10. Open de `"_Layout.cshtml"` in de `"View -> shared"` folder en voeg de volgende nav-items toe:
 ```html
 <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="BarChart">BarChart</a>
@@ -169,7 +170,7 @@ namespace AirBnbHighCharts.Controllers
                         </li>
 ```
 
-10. 
+11. 
 ## PieChart
 Maak een nieuwe `"Razor View"` aan in de `"Home"` map genaamd `"PieChart.cshtml"` en plak daar de volgende code in:
 ```c#
@@ -315,7 +316,7 @@ Hier zie je dus dat de `"ViewModel"` wordt aangeroepen met de methodes:
 *Is om een "`C#`" object om te zetten naar een "`Javascript JSON`" object*
 
 ## LineChart
-Maak een nieuwe Razor View aan in de `"Home"` map genaamd `"BarChart.cshtml"` en plak daar de volgende code in:
+Maak een nieuwe Razor View aan in de `"Home"` map genaamd `"LineChart.cshtml"` en plak daar de volgende code in:
 ```c#
 @model AirBnbHighCharts.ViewModels.HighChartViewModel;
 @using Newtonsoft.Json;
@@ -406,5 +407,5 @@ Hier zie je dus dat de viewmodel wordt aangeroepen met de methodes:
 ```
 *Is om een "`C#`" object om te zetten naar een "`Javascript JSON`" object*
 
-11. Start je applicatie en navigeer naar de pagina via de navbar.
+12. Start je applicatie en navigeer naar de pagina via de navbar.
 Als het goed is zie je nu een barchart met de gegeven data.
