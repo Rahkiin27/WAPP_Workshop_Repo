@@ -5,12 +5,6 @@ VisualStudioVersion = 16.0.28705.295
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AirBnbFakeDatabase", "AirBnbFakeDatabase\AirBnbFakeDatabase.csproj", "{38510869-E25D-4411-92EA-C07FDCEC9DC0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AirBnbHighCharts", "AirBnbHighCharts\AirBnbHighCharts.csproj", "{5D017490-2A31-47E2-9288-C0B4151C7270}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AirBnbCanvasJS", "AirBnbCanvasJS\AirBnbCanvasJS.csproj", "{6D7E9B28-8E93-4346-92C6-F43AC0EF8534}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AirBnbChartJS", "AirBnbChartJS\AirBnbChartJS.csproj", "{E91370F2-9F87-402F-85E1-9486C6817C90}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,18 +15,6 @@ Global
 		{38510869-E25D-4411-92EA-C07FDCEC9DC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38510869-E25D-4411-92EA-C07FDCEC9DC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38510869-E25D-4411-92EA-C07FDCEC9DC0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5D017490-2A31-47E2-9288-C0B4151C7270}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5D017490-2A31-47E2-9288-C0B4151C7270}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5D017490-2A31-47E2-9288-C0B4151C7270}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5D017490-2A31-47E2-9288-C0B4151C7270}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6D7E9B28-8E93-4346-92C6-F43AC0EF8534}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6D7E9B28-8E93-4346-92C6-F43AC0EF8534}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6D7E9B28-8E93-4346-92C6-F43AC0EF8534}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6D7E9B28-8E93-4346-92C6-F43AC0EF8534}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E91370F2-9F87-402F-85E1-9486C6817C90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E91370F2-9F87-402F-85E1-9486C6817C90}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E91370F2-9F87-402F-85E1-9486C6817C90}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E91370F2-9F87-402F-85E1-9486C6817C90}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
