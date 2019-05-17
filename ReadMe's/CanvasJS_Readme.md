@@ -4,7 +4,7 @@
 In deze workshop gaan we een barchart, piechart en linechart toevoegen d.m.v. canvasJS.
 
 1. Clone de workshop repo: [https://github.com/TheLegend27NL/WAPP_Workshop_Repo](https://github.com/TheLegend27NL/WAPP_Workshop_Repo)
-2. Open de solution met VS2019
+2. Maak een nieuw .NET CORE 3.0 MVC project in dezelfde solution aan.
 3. Open in project "AirBnbCanvasJs" het bestand `"Views/Shared/_Layout.cshtml"` en plaats de volgende regel op regel 6:
 ```c#
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>

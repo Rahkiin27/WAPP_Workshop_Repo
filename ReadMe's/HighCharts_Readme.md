@@ -3,7 +3,7 @@ In deze workshop gaan we een barchart, piechart en linechart toevoegen d.m.v. Hi
 
 1. Clone de workshop repo: [https://github.com/TheLegend27NL/WAPP_Workshop_Repo](https://github.com/TheLegend27NL/WAPP_Workshop_Repo)
 2. Open de solution met VS2019
-3. Maak een nieuw .NET CORE 3.0 MVC project aan genaamd: `"HighCharts"`
+3. Maak een nieuw .NET CORE 3.0 MVC project in dezelfde solution aan genaamd: `"HighCharts"`
 4. Installeer de Newtonsoft.Json NuGet package. (Staat als tweede wanneer de "Manage NuGet Packages" pagina op het "Browse" tabblad wordt geopend)
 
 5. Open _Layout.cshtml en plak het volgende boven "</head>":
